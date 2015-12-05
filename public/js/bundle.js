@@ -213,30 +213,46 @@ var TimeSlotDetailModal = React.createClass({
             React.createElement(
               'h3',
               null,
-              'Booking Details:'
+              'Booking Details for ',
+              this.props.slot.displayTime,
+              ':'
             )
           ),
           React.createElement(
             'div',
             { className: 'modal-body' },
-            'Name: ',
-            React.createElement('input', { type: 'text', value: this.state.name, autoFocus: true, onChange: this.handleNameChange }),
-            ' ',
-            React.createElement('br', null),
-            'Phone Number: ',
-            React.createElement('input', { type: 'text', value: this.state.phone, onChange: this.handlePhoneChange })
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'span',
+                { className: 'modal-label' },
+                'Name: '
+              ),
+              React.createElement('input', { type: 'text', value: this.state.name, autoFocus: true, onChange: this.handleNameChange })
+            ),
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'span',
+                { className: 'modal-label' },
+                'Phone Number: '
+              ),
+              React.createElement('input', { type: 'text', value: this.state.phone, onChange: this.handlePhoneChange })
+            )
           ),
           React.createElement(
             'div',
             { className: 'modal-footer' },
             React.createElement(
-              'button',
-              { type: 'button', onClick: this.close },
+              'a',
+              { onClick: this.close, href: 'javascript:;', role: 'button', className: 'btn-default btn' },
               'Cancel'
             ),
             React.createElement(
-              'button',
-              { type: 'button', onClick: this.handleSave },
+              'a',
+              { onClick: this.handleSave, href: 'javascript:;', role: 'button', className: 'btn-primary btn' },
               'Save'
             )
           )
@@ -270,12 +286,13 @@ var TimeSlotsView = React.createClass({
 
       this.props.slots.forEach(function (slot) {
 
-        var color = 'green';
+        var color = 'limegreen';
         if (slot.booked == 'true') {
-          color = 'red';
+          color = 'darkred';
         }
 
         var slotStyle = {
+          color: 'white',
           backgroundColor: color
         };
 
@@ -293,9 +310,18 @@ var TimeSlotsView = React.createClass({
     }
 
     return React.createElement(
-      'ul',
-      null,
-      slots
+      'div',
+      { className: 'slotsBlock' },
+      React.createElement(
+        'span',
+        { className: 'heading' },
+        'All the slots are listed below. Red slot indicates it is blocked by someone. Clicking on the slot will open up the modal which will allow to book/re-book the timeslot.'
+      ),
+      React.createElement(
+        'ul',
+        null,
+        slots
+      )
     );
   }
 });

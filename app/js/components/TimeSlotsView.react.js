@@ -16,12 +16,13 @@ var TimeSlotsView = React.createClass({
       
       this.props.slots.forEach(function(slot) {
       
-        var color = 'green';
+        var color = 'limegreen';
         if(slot.booked == 'true') {
-          color = 'red';
+          color = 'darkred';
         }
 
         var slotStyle = {
+          color: 'white',
           backgroundColor: color
         };
         
@@ -36,9 +37,15 @@ var TimeSlotsView = React.createClass({
     }
     
     return (
-      <ul>
-        {slots}
-      </ul>
+      <div className='slotsBlock'>
+        <span className='heading'>
+          All the slots are listed below. Red slot indicates it is blocked by someone. Clicking on the slot will open 
+          up the modal which will allow to book/re-book the timeslot.
+        </span>
+        <ul>
+          {slots}
+        </ul>
+      </div>
     );
   }
 });

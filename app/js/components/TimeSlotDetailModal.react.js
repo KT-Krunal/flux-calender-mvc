@@ -72,15 +72,19 @@ var TimeSlotDetailModal = React.createClass({
                 onClick={this.close}>
                 &times;
               </button>
-              <h3>Booking Details:</h3>
+              <h3>Booking Details for {this.props.slot.displayTime}:</h3>
             </div>
             <div className="modal-body">
-              Name: <input type='text' value={this.state.name} autoFocus={true} onChange={this.handleNameChange} /> <br/>
-              Phone Number: <input type='text' value={this.state.phone} onChange={this.handlePhoneChange} />
+              <div>
+                <span className='modal-label'>Name: </span><input type='text' value={this.state.name} autoFocus={true} onChange={this.handleNameChange} />
+              </div>
+              <div>
+                <span className='modal-label'>Phone Number: </span><input type='text' value={this.state.phone} onChange={this.handlePhoneChange} />
+              </div>
             </div>
             <div className="modal-footer">
-              <button type="button" onClick={this.close}>Cancel</button>
-              <button type="button" onClick={this.handleSave}>Save</button>
+              <a onClick={this.close} href="javascript:;" role="button" className='btn-default btn'>Cancel</a>
+              <a onClick={this.handleSave} href="javascript:;" role="button" className='btn-primary btn'>Save</a>
             </div>
           </div>
         </div>
