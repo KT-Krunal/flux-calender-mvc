@@ -1,0 +1,3 @@
+[submodule "submodules/eslint"]
+	path = submodules/eslint
+	url = git@github.com:KT-Krunal/git-submodules.git
